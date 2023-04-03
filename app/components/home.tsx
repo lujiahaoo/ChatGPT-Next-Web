@@ -103,9 +103,9 @@ function _Home() {
         className={styles.sidebar + ` ${showSideBar && styles["sidebar-show"]}`}
       >
         <div className={styles["sidebar-header"]}>
-          <div className={styles["sidebar-title"]}>ChatGPT Next</div>
+          <div className={styles["sidebar-title"]}>AI Assistant</div>
           <div className={styles["sidebar-sub-title"]}>
-            Build your own AI assistant.
+            省点用兄弟们~对了，输入框输入/ ，可以使用现成的提示词，让回复更专业、精准~
           </div>
           <div className={styles["sidebar-logo"]}>
             <ChatGptIcon />
