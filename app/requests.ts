@@ -87,7 +87,7 @@ export async function requestUsage() {
 
   try {
     const response = (await res.json()) as {
-      total_usage: number;
+      total_usage: 1;
       error?: {
         type: string;
         message: string;
