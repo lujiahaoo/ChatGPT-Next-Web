@@ -25,7 +25,7 @@ const cn = {
       if (submitKey === String(SubmitKey.Enter)) {
         inputHints += "，Shift + Enter 换行";
       }
-      return inputHints;
+      return inputHints + ", / + 空格 触发提示词(提示词有利于让ChatGPT回复更专业、精确)";
     },
     Send: "发送",
   },
