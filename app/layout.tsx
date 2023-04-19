@@ -10,13 +10,8 @@ export const metadata = {
   title: "Johopig",
   description: "Your personal ChatGPT Chat Bot.",
   appleWebApp: {
-<<<<<<< HEAD
     title: "Johopig",
     statusBarStyle: "black-translucent",
-=======
-    title: "ChatGPT Next Web",
-    statusBarStyle: "default",
->>>>>>> b2c711a5e847c33dca139e2e0694c67f0fda4618
   },
   themeColor: "#fafafa",
 };
