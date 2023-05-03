@@ -1,6 +1,10 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+<<<<<<< HEAD
 import { FETCH_COMMIT_URL, FETCH_TAG_URL } from "../constant";
+=======
+import { FETCH_COMMIT_URL, FETCH_TAG_URL, StoreKey } from "../constant";
+>>>>>>> e0053d57f7d76248fd68d9f67ddbf1f64f431ea6
 import { requestUsage } from "../requests";
 
 export interface UpdateStore {
@@ -16,7 +20,21 @@ export interface UpdateStore {
   updateUsage: (force?: boolean) => Promise<void>;
 }
 
-export const UPDATE_KEY = "chat-update";
+function queryMeta(key: string, defaultValue?: string): string {
+  let ret: string;
+  if (document) {
+    const meta = document.head.querySelector(
+      `meta[name='${key}']`,
+    ) as HTMLMetaElement;
+    ret = meta?.content ?? "";
+  } else {
+    ret = defaultValue ?? "";
+  }
+
+  return ret;
+}
+
+const ONE_MINUTE = 60 * 1000;
 
 function queryMeta(key: string, defaultValue?: string): string {
   let ret: string;
@@ -84,7 +102,7 @@ export const useUpdateStore = create<UpdateStore>()(
       },
     }),
     {
-      name: UPDATE_KEY,
+      name: StoreKey.Update,
       version: 1,
     },
   ),

@@ -4,30 +4,36 @@ require("../polyfill");
 
 import { useState, useEffect, useRef } from "react";
 
-import { IconButton } from "./button";
 import styles from "./home.module.scss";
 
-import SettingsIcon from "../icons/settings.svg";
-import GithubIcon from "../icons/github.svg";
-import ChatGptIcon from "../icons/chatgpt.svg";
-
 import BotIcon from "../icons/bot.svg";
-import AddIcon from "../icons/add.svg";
 import LoadingIcon from "../icons/three-dots.svg";
-import CloseIcon from "../icons/close.svg";
 
+<<<<<<< HEAD
 import { useChatStore } from "../store";
 import { getCSSVar, isMobileScreen } from "../utils";
 import Locale from "../locales";
 import { Chat } from "./chat";
+=======
+import { getCSSVar, useMobileScreen } from "../utils";
+>>>>>>> e0053d57f7d76248fd68d9f67ddbf1f64f431ea6
 
 import dynamic from "next/dynamic";
-import { REPO_URL } from "../constant";
+import { Path, SlotID } from "../constant";
 import { ErrorBoundary } from "./error";
+
+import {
+  HashRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
+import { SideBar } from "./sidebar";
+import { useAppConfig } from "../store/config";
 
 export function Loading(props: { noLogo?: boolean }) {
   return (
-    <div className={styles["loading-content"]}>
+    <div className={styles["loading-content"] + " no-dark"}>
       {!props.noLogo && <BotIcon />}
       <LoadingIcon />
     </div>
@@ -38,12 +44,29 @@ const Settings = dynamic(async () => (await import("./settings")).Settings, {
   loading: () => <Loading noLogo />,
 });
 
+<<<<<<< HEAD
 const ChatList = dynamic(async () => (await import("./chat-list")).ChatList, {
   loading: () => <Loading noLogo />,
 });
 
 function useSwitchTheme() {
   const config = useChatStore((state) => state.config);
+=======
+const Chat = dynamic(async () => (await import("./chat")).Chat, {
+  loading: () => <Loading noLogo />,
+});
+
+const NewChat = dynamic(async () => (await import("./new-chat")).NewChat, {
+  loading: () => <Loading noLogo />,
+});
+
+const MaskPage = dynamic(async () => (await import("./mask")).MaskPage, {
+  loading: () => <Loading noLogo />,
+});
+
+export function useSwitchTheme() {
+  const config = useAppConfig();
+>>>>>>> e0053d57f7d76248fd68d9f67ddbf1f64f431ea6
 
   useEffect(() => {
     document.body.classList.remove("light");
@@ -130,6 +153,7 @@ const useHasHydrated = () => {
   return hasHydrated;
 };
 
+<<<<<<< HEAD
 function _Home() {
   const [createNewSession, currentIndex, removeSession] = useChatStore(
     (state) => [
@@ -154,15 +178,26 @@ function _Home() {
   if (loading) {
     return <Loading />;
   }
+=======
+function Screen() {
+  const config = useAppConfig();
+  const location = useLocation();
+  const isHome = location.pathname === Path.Home;
+  const isMobileScreen = useMobileScreen();
+>>>>>>> e0053d57f7d76248fd68d9f67ddbf1f64f431ea6
 
   return (
     <div
-      className={`${
-        config.tightBorder && !isMobileScreen()
-          ? styles["tight-container"]
-          : styles.container
-      }`}
+      className={
+        styles.container +
+        ` ${
+          config.tightBorder && !isMobileScreen
+            ? styles["tight-container"]
+            : styles.container
+        }`
+      }
     >
+<<<<<<< HEAD
       <div
         className={styles.sidebar + ` ${showSideBar && styles["sidebar-show"]}`}
       >
@@ -244,15 +279,35 @@ function _Home() {
             sideBarShowing={showSideBar}
           />
         )}
+=======
+      <SideBar className={isHome ? styles["sidebar-show"] : ""} />
+
+      <div className={styles["window-content"]} id={SlotID.AppBody}>
+        <Routes>
+          <Route path={Path.Home} element={<Chat />} />
+          <Route path={Path.NewChat} element={<NewChat />} />
+          <Route path={Path.Masks} element={<MaskPage />} />
+          <Route path={Path.Chat} element={<Chat />} />
+          <Route path={Path.Settings} element={<Settings />} />
+        </Routes>
+>>>>>>> e0053d57f7d76248fd68d9f67ddbf1f64f431ea6
       </div>
     </div>
   );
 }
 
 export function Home() {
+  useSwitchTheme();
+
+  if (!useHasHydrated()) {
+    return <Loading />;
+  }
+
   return (
     <ErrorBoundary>
-      <_Home></_Home>
+      <Router>
+        <Screen />
+      </Router>
     </ErrorBoundary>
   );
 }

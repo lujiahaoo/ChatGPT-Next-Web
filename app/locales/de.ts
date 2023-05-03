@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { SubmitKey } from "../store/app";
+=======
+import { SubmitKey } from "../store/config";
+>>>>>>> e0053d57f7d76248fd68d9f67ddbf1f64f431ea6
 import type { LocaleType } from "./index";
 
 const de: LocaleType = {
@@ -31,6 +35,13 @@ const de: LocaleType = {
       return inputHints + ", / zum Durchsuchen von Prompts";
     },
     Send: "Senden",
+<<<<<<< HEAD
+=======
+    Config: {
+      Reset: "Reset to Default",
+      SaveAs: "Save as Mask",
+    },
+>>>>>>> e0053d57f7d76248fd68d9f67ddbf1f64f431ea6
   },
   Export: {
     Title: "Alle Nachrichten",
@@ -61,6 +72,7 @@ const de: LocaleType = {
       ClearAll: "Alle Daten löschen",
       ResetAll: "Alle Einstellungen zurücksetzen",
       Close: "Schließen",
+<<<<<<< HEAD
       ConfirmResetAll: {
         Confirm: "Möchten Sie wirklich alle Konfigurationen zurücksetzen?",
       },
@@ -70,6 +82,15 @@ const de: LocaleType = {
     },
     Lang: {
       Name: "Language", // ATTENTION: if you wanna add a new translation, please do not translate this value, leave it as `Language`
+=======
+      ConfirmResetAll:
+        "Möchten Sie wirklich alle Konfigurationen zurücksetzen?",
+      ConfirmClearAll: "Möchten Sie wirklich alle Chats zurücksetzen?",
+    },
+    Lang: {
+      Name: "Language", // ATTENTION: if you wanna add a new translation, please do not translate this value, leave it as `Language`
+      All: "All Languages",
+>>>>>>> e0053d57f7d76248fd68d9f67ddbf1f64f431ea6
       Options: {
         cn: "简体中文",
         en: "English",
@@ -97,7 +118,18 @@ const de: LocaleType = {
     SendKey: "Senden-Taste",
     Theme: "Erscheinungsbild",
     TightBorder: "Enger Rahmen",
+<<<<<<< HEAD
     SendPreviewBubble: "Vorschau-Bubble senden",
+=======
+    SendPreviewBubble: {
+      Title: "Vorschau-Bubble senden",
+      SubTitle: "Preview markdown in bubble",
+    },
+    Mask: {
+      Title: "Mask Splash Screen",
+      SubTitle: "Show a mask splash screen before starting new chat",
+    },
+>>>>>>> e0053d57f7d76248fd68d9f67ddbf1f64f431ea6
     Prompt: {
       Disable: {
         Title: "Autovervollständigung deaktivieren",
@@ -112,6 +144,12 @@ const de: LocaleType = {
         Add: "Add One",
         Search: "Search Prompts",
       },
+<<<<<<< HEAD
+=======
+      EditModal: {
+        Title: "Edit Prompt",
+      },
+>>>>>>> e0053d57f7d76248fd68d9f67ddbf1f64f431ea6
     },
     HistoryCount: {
       Title: "Anzahl der angehängten Nachrichten",
@@ -171,8 +209,11 @@ const de: LocaleType = {
       Summarize:
         "Fassen Sie unsere Diskussion kurz in 200 Wörtern oder weniger zusammen, um sie als Pronpt für zukünftige Gespräche zu verwenden.",
     },
+<<<<<<< HEAD
     ConfirmClearAll:
       "Bestätigen Sie, um alle Chat- und Einstellungsdaten zu löschen?",
+=======
+>>>>>>> e0053d57f7d76248fd68d9f67ddbf1f64f431ea6
   },
   Copy: {
     Success: "In die Zwischenablage kopiert",
@@ -184,6 +225,56 @@ const de: LocaleType = {
     Edit: "Kontext- und Gedächtnis-Prompts",
     Add: "Hinzufügen",
   },
+<<<<<<< HEAD
+=======
+  Plugin: {
+    Name: "Plugin",
+  },
+  Mask: {
+    Name: "Mask",
+    Page: {
+      Title: "Prompt Template",
+      SubTitle: (count: number) => `${count} prompt templates`,
+      Search: "Search Templates",
+      Create: "Create",
+    },
+    Item: {
+      Info: (count: number) => `${count} prompts`,
+      Chat: "Chat",
+      View: "View",
+      Edit: "Edit",
+      Delete: "Delete",
+      DeleteConfirm: "Confirm to delete?",
+    },
+    EditModal: {
+      Title: (readonly: boolean) =>
+        `Edit Prompt Template ${readonly ? "(readonly)" : ""}`,
+      Download: "Download",
+      Clone: "Clone",
+    },
+    Config: {
+      Avatar: "Bot Avatar",
+      Name: "Bot Name",
+    },
+  },
+  NewChat: {
+    Return: "Return",
+    Skip: "Skip",
+    Title: "Pick a Mask",
+    SubTitle: "Chat with the Soul behind the Mask",
+    More: "Find More",
+    NotShow: "Not Show Again",
+    ConfirmNoShow: "Confirm to disable？You can enable it in settings later.",
+  },
+
+  UI: {
+    Confirm: "Confirm",
+    Cancel: "Cancel",
+    Close: "Close",
+    Create: "Create",
+    Edit: "Edit",
+  },
+>>>>>>> e0053d57f7d76248fd68d9f67ddbf1f64f431ea6
 };
 
 export default de;

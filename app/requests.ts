@@ -1,5 +1,16 @@
 import type { ChatRequest, ChatResponse } from "./api/openai/typing";
+<<<<<<< HEAD
 import { Message, ModelConfig, useAccessStore, useChatStore } from "./store";
+=======
+import {
+  Message,
+  ModelConfig,
+  ModelType,
+  useAccessStore,
+  useAppConfig,
+  useChatStore,
+} from "./store";
+>>>>>>> e0053d57f7d76248fd68d9f67ddbf1f64f431ea6
 import { showToast } from "./components/ui-lib";
 
 const TIME_OUT_MS = 60000;
@@ -7,8 +18,8 @@ const TIME_OUT_MS = 60000;
 const makeRequestParam = (
   messages: Message[],
   options?: {
-    filterBot?: boolean;
     stream?: boolean;
+    overrideModel?: ModelType;
   },
 ): ChatRequest => {
   let sendMessages = messages.map((v) => ({
@@ -16,8 +27,14 @@ const makeRequestParam = (
     content: v.content,
   }));
 
-  if (options?.filterBot) {
-    sendMessages = sendMessages.filter((m) => m.role !== "assistant");
+  const modelConfig = {
+    ...useAppConfig.getState().modelConfig,
+    ...useChatStore.getState().currentSession().mask.modelConfig,
+  };
+
+  // override model config
+  if (options?.overrideModel) {
+    modelConfig.model = options.overrideModel;
   }
 
   const modelConfig = { ...useChatStore.getState().config.modelConfig };
@@ -29,7 +46,13 @@ const makeRequestParam = (
   return {
     messages: sendMessages,
     stream: options?.stream,
+<<<<<<< HEAD
     ...modelConfig,
+=======
+    model: modelConfig.model,
+    temperature: modelConfig.temperature,
+    presence_penalty: modelConfig.presence_penalty,
+>>>>>>> e0053d57f7d76248fd68d9f67ddbf1f64f431ea6
   };
 };
 
@@ -61,8 +84,15 @@ export function requestOpenaiClient(path: string) {
     });
 }
 
-export async function requestChat(messages: Message[]) {
-  const req: ChatRequest = makeRequestParam(messages, { filterBot: true });
+export async function requestChat(
+  messages: Message[],
+  options?: {
+    model?: ModelType;
+  },
+) {
+  const req: ChatRequest = makeRequestParam(messages, {
+    overrideModel: options?.model,
+  });
 
   const res = await requestOpenaiClient("v1/chat/completions")(req);
 
@@ -80,11 +110,19 @@ export async function requestUsage() {
       .getDate()
       .toString()
       .padStart(2, "0")}`;
+<<<<<<< HEAD
   const ONE_DAY = 2 * 24 * 60 * 60 * 1000;
   const now = new Date(Date.now() + ONE_DAY);
   const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
   const startDate = formatDate(startOfMonth);
   const endDate = formatDate(now);
+=======
+  const ONE_DAY = 1 * 24 * 60 * 60 * 1000;
+  const now = new Date();
+  const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
+  const startDate = formatDate(startOfMonth);
+  const endDate = formatDate(new Date(Date.now() + ONE_DAY));
+>>>>>>> e0053d57f7d76248fd68d9f67ddbf1f64f431ea6
 
   const [used, subs] = await Promise.all([
     requestOpenaiClient(
@@ -127,8 +165,8 @@ export async function requestUsage() {
 export async function requestChatStream(
   messages: Message[],
   options?: {
-    filterBot?: boolean;
     modelConfig?: ModelConfig;
+    overrideModel?: ModelType;
     onMessage: (message: string, done: boolean) => void;
     onError: (error: Error, statusCode?: number) => void;
     onController?: (controller: AbortController) => void;
@@ -136,7 +174,7 @@ export async function requestChatStream(
 ) {
   const req = makeRequestParam(messages, {
     stream: true,
-    filterBot: options?.filterBot,
+    overrideModel: options?.overrideModel,
   });
 
   console.log("[Request] ", req);
@@ -204,7 +242,13 @@ export async function requestChatStream(
   }
 }
 
-export async function requestWithPrompt(messages: Message[], prompt: string) {
+export async function requestWithPrompt(
+  messages: Message[],
+  prompt: string,
+  options?: {
+    model?: ModelType;
+  },
+) {
   messages = messages.concat([
     {
       role: "user",
@@ -213,7 +257,7 @@ export async function requestWithPrompt(messages: Message[], prompt: string) {
     },
   ]);
 
-  const res = await requestChat(messages);
+  const res = await requestChat(messages, options);
 
   return res?.choices?.at(0)?.message?.content ?? "";
 }

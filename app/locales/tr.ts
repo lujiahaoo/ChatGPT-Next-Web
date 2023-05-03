@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { SubmitKey } from "../store/app";
+=======
+import { SubmitKey } from "../store/config";
+>>>>>>> e0053d57f7d76248fd68d9f67ddbf1f64f431ea6
 import type { LocaleType } from "./index";
 
 const tr: LocaleType = {
@@ -31,6 +35,13 @@ const tr: LocaleType = {
       return inputHints + ", komutları aramak için / (eğik çizgi)";
     },
     Send: "Gönder",
+<<<<<<< HEAD
+=======
+    Config: {
+      Reset: "Reset to Default",
+      SaveAs: "Save as Mask",
+    },
+>>>>>>> e0053d57f7d76248fd68d9f67ddbf1f64f431ea6
   },
   Export: {
     Title: "Tüm Mesajlar",
@@ -61,6 +72,7 @@ const tr: LocaleType = {
       ClearAll: "Tüm Verileri Temizle",
       ResetAll: "Tüm Ayarları Sıfırla",
       Close: "Kapat",
+<<<<<<< HEAD
       ConfirmResetAll: {
         Confirm: "Tüm ayarları sıfırlamak istediğinizden emin misiniz?",
       },
@@ -70,6 +82,14 @@ const tr: LocaleType = {
     },
     Lang: {
       Name: "Language", // ATTENTION: if you wanna add a new translation, please do not translate this value, leave it as `Language`
+=======
+      ConfirmResetAll: "Tüm ayarları sıfırlamak istediğinizden emin misiniz?",
+      ConfirmClearAll: "Tüm sohbeti sıfırlamak istediğinizden emin misiniz?",
+    },
+    Lang: {
+      Name: "Language", // ATTENTION: if you wanna add a new translation, please do not translate this value, leave it as `Language`
+      All: "All Languages",
+>>>>>>> e0053d57f7d76248fd68d9f67ddbf1f64f431ea6
       Options: {
         cn: "简体中文",
         en: "English",
@@ -97,7 +117,18 @@ const tr: LocaleType = {
     SendKey: "Gönder Tuşu",
     Theme: "Tema",
     TightBorder: "Tam Ekran",
+<<<<<<< HEAD
     SendPreviewBubble: "Mesaj Önizleme Balonu",
+=======
+    SendPreviewBubble: {
+      Title: "Mesaj Önizleme Balonu",
+      SubTitle: "Preview markdown in bubble",
+    },
+    Mask: {
+      Title: "Mask Splash Screen",
+      SubTitle: "Show a mask splash screen before starting new chat",
+    },
+>>>>>>> e0053d57f7d76248fd68d9f67ddbf1f64f431ea6
     Prompt: {
       Disable: {
         Title: "Otomatik tamamlamayı devre dışı bırak",
@@ -112,6 +143,12 @@ const tr: LocaleType = {
         Add: "Add One",
         Search: "Search Prompts",
       },
+<<<<<<< HEAD
+=======
+      EditModal: {
+        Title: "Edit Prompt",
+      },
+>>>>>>> e0053d57f7d76248fd68d9f67ddbf1f64f431ea6
     },
     HistoryCount: {
       Title: "Ekli Mesaj Sayısı",
@@ -171,8 +208,11 @@ const tr: LocaleType = {
       Summarize:
         "Gelecekteki bağlam için bir bilgi istemi olarak kullanmak üzere tartışmamızı en fazla 200 kelimeyle özetleyin.",
     },
+<<<<<<< HEAD
     ConfirmClearAll:
       "Tüm sohbet ve ayar verilerini temizlemeyi onaylıyor musunuz?",
+=======
+>>>>>>> e0053d57f7d76248fd68d9f67ddbf1f64f431ea6
   },
   Copy: {
     Success: "Panoya kopyalandı",
@@ -183,6 +223,56 @@ const tr: LocaleType = {
     Edit: "Bağlamsal ve Bellek Komutları",
     Add: "Yeni Ekle",
   },
+<<<<<<< HEAD
+=======
+  Plugin: {
+    Name: "Plugin",
+  },
+  Mask: {
+    Name: "Mask",
+    Page: {
+      Title: "Prompt Template",
+      SubTitle: (count: number) => `${count} prompt templates`,
+      Search: "Search Templates",
+      Create: "Create",
+    },
+    Item: {
+      Info: (count: number) => `${count} prompts`,
+      Chat: "Chat",
+      View: "View",
+      Edit: "Edit",
+      Delete: "Delete",
+      DeleteConfirm: "Confirm to delete?",
+    },
+    EditModal: {
+      Title: (readonly: boolean) =>
+        `Edit Prompt Template ${readonly ? "(readonly)" : ""}`,
+      Download: "Download",
+      Clone: "Clone",
+    },
+    Config: {
+      Avatar: "Bot Avatar",
+      Name: "Bot Name",
+    },
+  },
+  NewChat: {
+    Return: "Return",
+    Skip: "Skip",
+    Title: "Pick a Mask",
+    SubTitle: "Chat with the Soul behind the Mask",
+    More: "Find More",
+    NotShow: "Not Show Again",
+    ConfirmNoShow: "Confirm to disable？You can enable it in settings later.",
+  },
+
+  UI: {
+    Confirm: "Confirm",
+    Cancel: "Cancel",
+    Close: "Close",
+    Create: "Create",
+    Edit: "Edit",
+  },
+>>>>>>> e0053d57f7d76248fd68d9f67ddbf1f64f431ea6
 };
 
 export default tr;
