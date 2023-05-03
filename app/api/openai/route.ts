@@ -30,6 +30,10 @@ export async function GET(req: NextRequest) {
   return makeRequest(req);
 }
 
+<<<<<<< HEAD
 export const config = {
   runtime: "edge",
 };
+=======
+export const runtime = "edge";
+>>>>>>> e0053d57f7d76248fd68d9f67ddbf1f64f431ea6

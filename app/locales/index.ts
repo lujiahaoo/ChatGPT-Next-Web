@@ -19,9 +19,14 @@ export const AllLangs = [
   "jp",
   "de",
 ] as const;
+<<<<<<< HEAD
 type Lang = (typeof AllLangs)[number];
+=======
+export type Lang = (typeof AllLangs)[number];
+>>>>>>> e0053d57f7d76248fd68d9f67ddbf1f64f431ea6
 
 const LANG_KEY = "lang";
+const DEFAULT_LANG = "en";
 
 function getItem(key: string) {
   try {
@@ -41,7 +46,8 @@ function getLanguage() {
   try {
     return navigator.language.toLowerCase();
   } catch {
-    return "cn";
+    console.log("[Lang] failed to detect user lang.");
+    return DEFAULT_LANG;
   }
 }
 
@@ -60,7 +66,11 @@ export function getLang(): Lang {
     }
   }
 
+<<<<<<< HEAD
   return "en";
+=======
+  return DEFAULT_LANG;
+>>>>>>> e0053d57f7d76248fd68d9f67ddbf1f64f431ea6
 }
 
 export function changeLang(lang: Lang) {

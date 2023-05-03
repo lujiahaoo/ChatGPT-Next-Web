@@ -18,6 +18,18 @@
     cursor: not-allowed;
     opacity: 0.5;
   }
+<<<<<<< HEAD
+=======
+
+  &.primary {
+    background-color: var(--primary);
+    color: white;
+
+    path {
+      fill: white !important;
+    }
+  }
+>>>>>>> e0053d57f7d76248fd68d9f67ddbf1f64f431ea6
 }
 
 .shadow {
